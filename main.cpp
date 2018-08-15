@@ -116,9 +116,11 @@ int main(int argc, char *argv[])
 		std::locale::global(loccomma);
 
 		std::string images_path = "./";
+		std::string labels_path = "./";
 
-		if (argc >= 2) {
+		if (argc >= 3) {
 			images_path = std::string(argv[1]);         // path to images, train and synset
+			labels_path = std::string(argv[2]);
 		}
 		else {
 			std::cout << "Usage: [path_to_images] [train.txt] [obj.names] \n";
@@ -129,15 +131,15 @@ int main(int argc, char *argv[])
 		std::string synset_filename = images_path + "obj.names";
 
 		if (argc >= 3) {
-			train_filename = std::string(argv[2]);		// file containing: list of images
+			train_filename = std::string(argv[3]);		// file containing: list of images
 		}
 
 		if (argc >= 4) {
-			synset_filename = std::string(argv[3]);		// file containing: object names
+			synset_filename = std::string(argv[4]);		// file containing: object names
 		}
 
 		// capture frames from video file - 1 frame per 3 seconds of video
-		if (argc >= 4 && train_filename == "cap_video") {
+		if (argc >= 4 && labels_path == "cap_video") {
 			const std::string videofile = synset_filename;
 			cv::VideoCapture cap(videofile);
 			const int fps = cap.get(CV_CAP_PROP_FPS);
@@ -355,7 +357,7 @@ int main(int argc, char *argv[])
 						std::string const jpg_filename = jpg_filenames[old_trackbar_value];
 						std::string const filename_without_ext = jpg_filename.substr(0, jpg_filename.find_last_of("."));
 						std::string const txt_filename = filename_without_ext + ".txt";
-						std::string const txt_filename_path = images_path + "/" + txt_filename;
+						std::string const txt_filename_path = labels_path + "/" + txt_filename;
 
 						std::cout << "txt_filename_path = " << txt_filename_path << std::endl;
 
@@ -422,7 +424,7 @@ int main(int argc, char *argv[])
 							std::string const jpg_filename = jpg_filenames[trackbar_value];
 							std::string const txt_filename = jpg_filename.substr(0, jpg_filename.find_last_of(".")) + ".txt";
 							//std::cout << (images_path + "/" + txt_filename) << std::endl;
-							std::ifstream ifs(images_path + "/" + txt_filename);
+							std::ifstream ifs(labels_path + "/" + txt_filename);
 							current_coord_vec.clear();
 							for (std::string line; getline(ifs, line);)
 							{
