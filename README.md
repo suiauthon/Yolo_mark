@@ -45,6 +45,17 @@ As a result, many frames will be collected in the directory `data/img`. Then you
 * on Windows: `yolo_mark.exe data/img data/labels data/train.txt data/obj.names`
 * on Linux: `./yolo_mark data/img data/labels data/train.txt data/obj.names`
 
+#### How to create validation set
+
+To create validation (test) set use script `test_set_creator.py` as described below:
+  ```
+  ./scripts/test_set_creator.py data/img data precentage
+  ```
+where:
+  `data/img` - path to directory with images.
+  `data' - path to directory where list will be saved.
+  `percentage` - integer number that represents percentage of validation images from whole dataset.
+
 ----
 
 ![Image of Yolo_mark](https://habrastorage.org/files/229/f06/277/229f06277fcc49279342b7edfabbb47a.jpg)
