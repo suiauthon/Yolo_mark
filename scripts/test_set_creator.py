@@ -51,8 +51,12 @@ if __name__ == "__main__":
                 version(sys.argv[0])
             sys.exit(0)
 
-    if (len(sys.argv) < 3):
+    if (len(sys.argv) < 2):
         print('{}: missing  operand'.format(sys.argv[0]))
+        print('Try {} --help or {} -h for more information.'.format(sys.argv[0], sys.argv[0]))
+        sys.exit(0)
+    elif (len(sys.argv) < 4):
+        print('{}: wrong usage'.format(sys.argv[0]))
         print('Try {} --help or {} -h for more information.'.format(sys.argv[0], sys.argv[0]))
         sys.exit(0)
 
