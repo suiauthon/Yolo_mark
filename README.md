@@ -28,7 +28,7 @@ Supported both: OpenCV 2.x and OpenCV 3.x
 --------
 
 Arguments:
-  * `data/img` - directory containing all images
+  * `data/JPEGImages` - directory containing all images
   * `data/labels` - empty directory where all the labels will be saved
   * `data/train.txt` - path to file where all paths to the images will be saved.
   * `data/obj.names` - files with names of objects. The objects names should be in seperate lines.
